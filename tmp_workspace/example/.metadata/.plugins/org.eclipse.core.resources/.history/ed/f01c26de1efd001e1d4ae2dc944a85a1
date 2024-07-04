@@ -1,0 +1,20 @@
+package ex;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListToSet {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<String> list = new ArrayList<String>();
+		
+		list.add("김영호");
+		list.add("김지효");
+		list.add("박민규");
+		list.add("신권호");
+		list.add("신민석");
+		list.add("윤지상");
+	}
+
+}

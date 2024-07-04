@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>실습해보기1.style변경</title>
+  <style>
+    #container {
+      background: red;
+      display: none;
+    }
+
+    #container.block {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <button type="button" onclick="openModal()">창 열기</button>
+  <div id="container">
+    <button type="button" onclick="closeModal()">창 닫기</button>
+  </div>
+  <script>
+    let state = false;
+    const container = document.querySelector("#container");
+    const openModal = () => {
+      container.classList.add("block");
+    }
+    const closeModal = () => {
+      container.classList.remove("block");
+    }
+  </script>
+</body>
+
+</html>

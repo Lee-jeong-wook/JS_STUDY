@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ex01.자바스크립트 내장함수</title>
+</head>
+
+<body>
+  <h3>자바스크립트 내장함수 eval(), parseInt(), isNaN()</h3>
+  <hr>
+  <script>
+    const innerFunction = () => {
+      const result = eval("2*3+4*6");
+      console.log("2*3+4*6");
+      document.write(`eval(2*3+4*6): ${result}`);
+
+      const changeInt = parseInt("32");
+      document.write(`parseInt("0x32"): ${changeInt}, ${typeof changeInt}`);
+      const changeStr = parseInt("hello");
+      document.write(`parseInt("0x32"): ${changeStr}, ${typeof changeStr}`);
+      if(isNaN(changeStr)) document.write(`hello is not int`);
+    }
+    
+    innerFunction();
+  </script>
+</body>
+
+</html>

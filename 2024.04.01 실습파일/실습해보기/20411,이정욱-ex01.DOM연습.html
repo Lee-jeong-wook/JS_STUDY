@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ex01.자바스크립트 DOM연습</title>
+  <style>
+    body {
+      margin: 20px;
+      padding: 20px;
+      line-height: 1;
+      font-size: 1em;
+      color: #000;
+    }
+
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-top: 20px;
+    }
+
+    .title {
+      margin: 0;
+      padding: 0;
+      font-size: 1.5em;
+      font-weight: 500;
+    }
+
+    .container {
+      margin-top: 35px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">1.자바스크립트 DOM연습</h1>
+  <div class="container">
+    <ul id="tutorial">
+      <li class="html">HTML</li>
+      <li class="css">CSS</li>
+      <li class="css3">CSS3</li>
+      <li class="javascript">JavaScript</li>
+      <li class="jquery">jQuery</li>
+      <li class="blank"></li>
+    </ul>
+    <p id="portfolio" name="pf">portfolio</p>
+  </div>
+  <script>
+    const tutorial = document.getElementById("tutorial");
+    console.log(tutorial);
+    tutorial.style.backgroundColor = "#ccc";
+    const li = document.getElementsByTagName("li");
+    console.log(li);
+    // li[3].style.color = "orange";
+    // for (let i = 0; i < li.length; i++){
+    //   li[i].style.color ="red";
+    // }
+    // for in: 객체의 모든 열거 가능한 속성에 대해 반복
+    // for of: Symbol.iterator 속성을 가지는 컬렉션 전용 반복문
+    // iterable 객체를 만들어내는 생성자: Strinf, Array, Map, Set, TypedArray
+
+    for(let el of li){
+      el.style.color = "red";
+    }
+    for(let el in li){
+      console.log(el);
+    }
+
+    li.item(2).style.color = "blue";
+
+    const firstLi = document.getElementsByClassName("html");
+
+    firstLi[0].style.color = "yellow";
+
+    //
+    const portfolio = document.getElementsByName("pf");
+    console.log(portfolio);
+
+    const secondLi = document.querySelector(".css");
+    secondLi.style.fontSize = "30px";
+    console.log(secondLi);
+
+    const lists = document.querySelectorAll("li");
+    for(element of lists){
+      element.style.color = "black";
+    } 
+    const tutoral1 = document.querySelectorAll("#tutorial > li");
+    for(element of lists){
+      element.style.color = "red";
+    } 
+    // array.forEach(element => {
+      
+    // });
+  </script>
+</body>
+
+</html>

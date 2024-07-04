@@ -1,0 +1,11 @@
+select * from EMPLOYEES;
+
+-- select 다음 내가 가져오고 싶은 솏성을 입력하면 원하는 속성만 가져올 수 있어여
+selecy email, phone_number from employees;
+
+-- 모든 sql 명령어는 ;으로 끝난다
+-- 이클립스에서 여러개의 명령어를 한꺼번에 그룹으로 ㅅ실행하고자 할ㄸ꺠는 반드시 ;을 입력
+-- 이클립스에서 한개의 명령만 실행하는 경우 ; 입력 안해도 괜찮
+-- 속성명은 내망대로 별명 지울 수 있음
+-- as 별명을 쓰거나 한칸 띄고 별명을 써서 별명을 지을 수 있ㄲ다
+select email as "이메일", phone_number as "전화번호" from employees

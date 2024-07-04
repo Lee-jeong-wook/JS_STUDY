@@ -1,0 +1,4 @@
+--모든 쿼리문은 세미콜론으로 끝난다
+-- *는 모든 것
+select * from EMPLOYEES;
+select * from DEPARTMENTS;

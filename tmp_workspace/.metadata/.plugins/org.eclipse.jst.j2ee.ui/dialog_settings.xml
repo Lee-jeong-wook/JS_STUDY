@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="J2EE_EXPORT_OVERWRITE" value="false"/>
+	<item key="J2EE_EXPORT_SOURCE" value="true"/>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="apache-tomcat-10.0.27"/>
+		<item value="Apache Tomcat v9.0"/>
+	</list>
+	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="C:\Users\USER\Downloads\Library.war"/>
+		<item value="C:\Users\USER\Desktop\School_workspace\tmp_workspace\ShoopingMVC.war"/>
+		<item value="C:\Users\USER\Desktop\School_workspace\tmp_workspace\Shopping.war"/>
+		<item value="C:\Users\USER\Desktop\School_workspace\tmp_workspace\BoardMVC.war"/>
+		<item value="C:\Users\USER\Desktop\School_workspace\SBoard.war"/>
+		<item value="C:\Users\USER\Desktop\School_workspace\Board2.war"/>
+	</list>
+	<list key="J2EE_IMPORT_null">
+		<item value="C:\Users\USER\Downloads\School2 (1).war"/>
+		<item value="C:\Users\USER\Downloads\School2.war"/>
+		<item value="C:\Users\USER\Downloads\BoardMVC2.war"/>
+		<item value="C:\Users\USER\Downloads\BoardMVC.war"/>
+		<item value="C:\Users\USER\Desktop\School_workspace\tmp_workspace\BoardMVC.war"/>
+		<item value="C:\Users\USER\Desktop\School_workspace\Board.war"/>
+	</list>
+</section>

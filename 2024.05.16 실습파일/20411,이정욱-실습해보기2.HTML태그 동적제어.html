@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습해보기2.HTML태그 동적 제어</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      h2 {
+        text-align: center;
+        margin-top: 30px;
+        color: #333;
+      }
+
+      #buttons-container{
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      button{
+        padding: 20px 10px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 10px;
+      }
+      ul{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+      ul > li {
+        padding: 20px 10px;
+        list-style: none;
+        width: 40%;
+        border: 1px solid #000;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>동적으로 HTML 태그 생성 및 제거</h2>
+
+    <div id="buttons-container">
+      <button id="addItemBtn">Add Item</button>
+      <button id="removeItemBtn">Remove Last Item</button>
+    </div>
+
+    <ul id="list">
+      <!-- 여기에 동적으로 추가될 아이템이 나열 -->
+    </ul>
+
+    <script>
+      const btns = document.querySelectorAll("button");
+      const list = document.querySelector("#list");
+      const empty = () => {
+        if(list.childElementCount === 0){
+          const newElement = document.createElement("div");
+            newElement.textContent = `아무것도 없습니다`;
+            newElement.classList.add("empty");
+            list.appendChild(newElement);
+        } else{
+          if(list.firstElementChild.className === "empty"){
+            console.log(list.firstElementChild);
+            list.removeChild(list.firstElementChild);
+          }
+        }
+      }
+      empty();
+      btns.forEach((e) => {
+        empty();
+        e.addEventListener("click", () => {
+          const button = e.getAttribute("id");
+          let liCount = list.childElementCount + 1;
+          if(button === "addItemBtn"){
+            empty();
+            liCount = list.childElementCount + 1;
+            if(liCount > 10) return alert("최대 용량 넘었습니다");
+            const newElement = document.createElement("li");
+            newElement.textContent = `${liCount}번째 New li`;
+            list.appendChild(newElement);
+          }else{
+            if(list.lastElementChild.className === "empty") return alert("지울 요소 없습니다");
+            const removed = list.lastElementChild;
+            list.removeChild(removed);
+            empty();
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
+

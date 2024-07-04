@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;dao.BoardDAO&apos; to &apos;UserDAO&apos;&#x0D;&#x0A;- Original project: &apos;BoardMVC&apos;&#x0D;&#x0A;- Original element: &apos;dao.BoardDAO&apos;&#x0D;&#x0A;- Renamed element: &apos;dao.UserDAO&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;BoardDAO&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;dao{BoardDAO.java[BoardDAO" matchStrategy="1" name="UserDAO" qualified="false" references="true" similarDeclarations="false" stamp="1713430347703" textual="false" version="1.0"/>
+</session>

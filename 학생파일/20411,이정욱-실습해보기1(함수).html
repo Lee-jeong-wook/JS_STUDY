@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습해보기1</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const login = (id, pw) => {
+        if(id != "JsKing") alert("로그인 실패\n존재하지 않는 아이디")
+        else if((pw != "1234")) alert("로그인 실패\n잘못된 바번")
+        else document.write(`${id}님 환영합니다`)
+    }
+    while(true){
+        let user_id = prompt("아이디 입력", "");
+        let user_pw = prompt("비번 입력", "");
+        //trim() 문자열 양 끝의 공백을 제거
+        console.log(user_id.split(" "), user_pw.split(" "));
+        // if(user_id.split(" ").length() > 1 || user_pw.split(" ").length() > 1){
+        //     const blank_pattern = /[\s]/g;
+        // } else{
+
+        // }
+        const blank_pattern = /[\s]/g; //문자열 모든 공백 체크
+        // - s: 공백문자
+        // - g: 모든 패턴 체크
+
+        //includes(찾을 문자열[, \[position])
+        // -  정규식이 아닌 모든 값은 문자열로 강제 변환되므로 이 값을 생략하거나 undefined일 경우 원하는 동작 안할 수 있음
+
+        if(user_id.match(blank_pattern) || user_pw.match(blank_pattern)){
+            alert("아이디나 패스워드에 공백 포함 불가");
+            continue;
+        } else{
+            
+        }
+    }
+</script>
+</html>

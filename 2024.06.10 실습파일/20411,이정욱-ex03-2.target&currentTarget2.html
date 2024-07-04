@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ex03-1</title>
+  <style>
+    li {
+      line-height: 30px;
+      font-size: 20px;
+    }
+
+    li.active {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>target & 버블링</h1>
+  <div class="content">
+
+  </div>
+  <script>
+    const box = document.querySelector(".content");
+    const container = document.createElement("ol");
+    let message = ["First", "Second", "Third"];
+    for(let i = 0; i < 3; i++) container.appendChild(document.createElement("li"));
+    for(let i = 0; i < 3; i++) container.children[i].textContent = message[i] += " item";
+    box.appendChild(container);
+    container.addEventListener("click", (e) => {
+      e.target.classList.toggle("active");
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주소록</title>
+    <style>
+      body {
+        transition: all 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>주소록 예제</h2>
+    <form>
+      이름: <input type="text" name="name" /><br />
+      전화번호: <input type="text" name="tel" /><br /><br />
+      <input data-name="save" type="button" value="저장" />
+      <input data-name="reset" type="button" value="리셋" />
+      <input data-name="mode" type="button" value="다크모드" />
+    </form>
+    <hr />
+    <h3>주소록 목록</h3>
+    <ul id="addrlist"></ul>
+    <script>
+      const inputList = document.querySelectorAll("input");
+      const name = document.querySelector("input[data-name='save']");
+      const tel = document.getElementsByName("tel")[0];
+      const insertTag = document.querySelector("#addrlist");
+      const phoneReg = /^(0)\d{1,2}-\d{3,4}-\d{4}$/;
+      const valid = (target) => {
+        if(target.replace(/ /g, "") === "") return false;
+        return true;
+      }
+      const phoneValid= (target) => {
+        if(!valid(target) || !phoneReg.test(tel.value)){
+          alert("다시 입력하세요");
+          return false;
+        };
+        return true;
+      }
+      inputList.forEach((input) => {
+        input.addEventListener("click", () => {
+          switch (input.dataset.name) {
+          case "save":
+            if(!valid(name.value) || !phoneValid(tel.value)) return;
+            const newElement =document.createElement("li");
+            newElement.textContent = `name : ${name.value} tel : ${tel.value}`;
+            insertTag.appendChild(newElement);
+            break;
+          case "reset":
+            if(insertTag.childElementCount === 0) return alert("지울 요소 없음");
+            const children = Array.from(insertTag.children);
+            children.forEach((e) => {
+              e.remove();
+            })
+            break;
+          case "mode":
+            const documentE = document.documentElement;
+            if (!documentE.hasAttribute("color-theme")) {
+              documentE.setAttribute("color-theme", "dark");
+              documentE.style.color = "#fff";
+              documentE.style.backgroundColor = "#000";
+              console.log(input);
+              input.value = "라이트모드";
+            } else {
+              documentE.removeAttribute("color-theme");
+              documentE.style.color = "";
+              documentE.style.backgroundColor = "";
+              input.value = "다크모드";
+            }
+            break;
+
+          default:
+
+            break;
+        }
+        })
+      })
+    </script>
+  </body>
+</html>

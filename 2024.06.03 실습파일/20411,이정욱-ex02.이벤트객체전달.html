@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ex02.이벤트 객체 전달받기</title>
+</head>
+
+<body>
+  <p id="p" onmouseover="this.style.background='blue'
+  " onmouseout="this.style.background='transparent'">마우스를 올려 보세요</p>
+  <button>클릭하세요1</button>
+  <button>클릭하세요2</button>
+  </br><button style="margin-top:10px">클릭하세요2 이벤트 제거</button>
+  </br><button style="margin-top:10px">버튼 이동</button>
+  <script>
+    const btns = document.querySelectorAll("button");
+    
+    const eventResult = (event) => {
+      alert(`event type : ${event.type}`);
+    }
+
+    btns[0].addEventListener("dblclick",  (e) => {
+      eventResult(e);
+    })
+    
+    btns[1].addEventListener("click",eventResult);
+
+    btns[2].addEventListener("click", (e) => {
+      btns[1].removeEventListener("click", eventResult);
+    })
+    btns[3].addEventListener("click", (e) => {
+      e.target.parentElement.insertAdjacentElement("afterbegin",e.target);
+      e.target.parentElement.insertBefore(e.target, e.target.parentElement.firstElementChild);
+      e.target.parentElement.firstElementChild.before(e.target);
+      e.target.parentElement.prepend(e.target);
+      //before: 선택한 요소의 앞에 추가
+      //prepend: 요소의 내부의 시작부분에 추가
+    })
+    // btns[4].parentElement.appendChild(btns[4]);
+    //이벤트 제거 불가
+    // btns[1].onclick = eventResult;
+  </script>
+</body>
+
+</html>

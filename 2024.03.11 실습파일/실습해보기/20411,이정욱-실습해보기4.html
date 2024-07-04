@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습해보기4.switch문 - 포털사이트 방문</title>
+  </head>
+  <body>
+    <h3>
+      <a href="./semple.html">sample 페이지로 이동</a>
+    </h3>
+  </body>
+  <script>
+    const value = prompt("사이트 입력")
+    switch (value) {
+      case "네이버":
+        location.href= "https://www.naver.com/";
+        break;
+      case "구글":
+        location.href="https://www.google.com/";
+        break;
+      case "카카오":
+        location.href="https://www.kakao.com/";
+        break;
+    
+      default:
+        alert("존재하지 않습니다");
+        break;  
+    }
+  </script>
+</html>

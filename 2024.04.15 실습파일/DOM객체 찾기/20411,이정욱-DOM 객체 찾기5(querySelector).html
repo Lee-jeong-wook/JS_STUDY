@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Insert title here</title>
+</head>
+
+<body>
+  <button onclick="selectByCssSelector();">
+    CSS 선택자로 하나만 선택하기
+  </button>
+  <button onclick="selectByCssSelectorAll();">
+    CSS 선택자로 전체 선택하기
+  </button>
+  <p id="selected"></p>
+  <div>
+    <span class="bbb">1번</span>
+    <span>2번</span>
+    <span id="aaa">3번</span>
+    <span>4번</span>
+    <span class="bbb">5번</span>
+    <span>6번</span>
+  </div>
+  <script type="text/javascript">
+    // 조건: 1) 공백, 문자사이 공백 => 공백은 입력할 수 없습니다. 다시 입력해주세요.
+    //       2) 없는 선택자일 경우 => span 태그들 중 ${입력한} 선택자는 존재하지 않습니다. 다시 입력해주세요.
+    //       3) 아이디, 클래스명은 숫자로 시작할 수 없음 => "선택자는 숫자로 시작할 수 없습니다. 다시 입력해주세요.
+    let check = null;
+      let flag = true;
+
+      const removeBackground = () => {
+        document.querySelectorAll('span').forEach(e => {
+          e.style.backgroundColor = '#fff';
+        })
+      }
+      
+      const checkPattern = (value, check) => {
+        removeBackground();
+        
+        // early Return: 조건과 맞지 않는 결과를 일찍 반환
+        // - 소거법을 사용하여 빠르게 return하기때문에 가독성 굳
+
+        // 1. 공백, 문자사이 공백
+        // 1) 정규표현식 
+        // 2) split
+        if (value == "" || value.split(" ").length > 1) {
+          alert("공백은 입력 불가. \n다시 입력해주세요");
+          return;
+        }
+
+        // 2. 아이디, 클래스명은 숫자로 시작할 수 없음
+        // charAt(): 지정된 인덱스에 있는 문자를 반환
+        if (!isNaN(value.charAt(1))) {
+          alert("선택자는 숫자로 시작 불가. \n다시 입력해주세요.");
+          return;
+        }
+
+        //3. 없는 선택자일 경우
+        // 1) 정규표현식 
+        // 2) try catch
+        try {
+          let spanElement = check === "selector" ? [document.querySelector(value)] : document.querySelectorAll(value);
+          console.log(check);
+
+          if(spanElement == null || spanElement.length == 0) {
+            console.log(spanElement);
+            alert(`${value} 선택자는 존재하지 않습니다`);
+            return;
+          }
+
+          document.getElementById("selected").textContent = `선택된 CSS는 ${value} 입니다.`;
+
+        for (let element of spanElement) {
+          element.style.backgroundColor = "#f00"
+        }
+        flag = false;
+        return;
+
+        } catch (error) {
+          alert("옳지 않은 선택자");
+          console.log(error.name, error.message);
+        }
+      }
+
+      const selectByCssSelector = () => {
+        flag = true;
+
+        while (flag) {
+          const selector = prompt("CSS 단일 선택자");
+          if (selector == null) {
+            break;
+          }
+          check = 'selector';
+          checkPattern(selector, check);
+        }
+      }
+
+      const selectByCssSelectorAll = () => {
+        flag = true;
+
+        while (flag) {
+          const selector = prompt("CSS 복수 선택자")
+          if (selector == null) {
+            break;
+          }
+          check = 'selectorAll';
+          checkPattern(selector, check);
+        }
+      }
+      
+  </script>
+</body>
+
+</html>

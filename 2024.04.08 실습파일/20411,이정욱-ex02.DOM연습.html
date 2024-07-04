@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ex02.자바스크립트 DOM연습</title>
+</head>
+
+<body>
+  <h1 id="first">HTML 요소(element)를 찾는방법</h1>
+  <h2>first h2</h2>
+  <h2>second h2</h2>
+  <ul id="container_1" class="container1">
+    <li id="li1">HTML</li>
+    <li class="li2">CSS</li>
+    <li id="li3">JavaScript</li>
+  </ul>
+  <ol id="container_2" class="container2">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ol>
+  <h2>third h2</h2>
+
+  <script type="text/javascript">
+    document.getElementById("first").style.color = "red";
+
+    //전체 li 채그를 찾아서 배경색을 lightgreen으로 변경
+    const list = document.getElementsByTagName("li");
+    // for (let i = 0; i < list  .length; i++) {
+    //   list[i].style.backgroundColor = "lightgreen";
+      
+    // }
+    // for (const iterator of list) {
+    //   iterator.style.backgroundColor = "lightgreen";
+    // }
+    const lists = document.querySelectorAll("li");
+    //foreach 배열 전문 ㄴ반복문
+    //유사 배열 => 배열
+    // 1) Array.from(): 배열로 면환
+    const liArr = Array.from(list);
+    liArr.forEach((element) => {
+      element.style.backgroundColor = "lightgreen";
+    })
+    // lists.forEach(element => {
+    //   element.style.backgroundColor = "lightgreen";
+    // });
+
+    //2) Spread Operator
+    //...
+    const liArr2 = [...lists];
+    console.log(liArr2);
+    liArr2.forEach((element) => {
+      element.style.backgroundColor = "lightgreen";
+    })
+    const h2list = document.querySelectorAll("h2");
+    h2list.forEach((element) => {
+      element.style.color = "pink";
+    })
+
+  </script>
+</body>
+
+</html>

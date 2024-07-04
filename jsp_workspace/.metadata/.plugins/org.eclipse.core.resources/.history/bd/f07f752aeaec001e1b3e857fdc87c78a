@@ -1,0 +1,39 @@
+--모든 쿼리문은 세미콜론으로 끝난다
+-- *는 모든 것
+--select * from EMPLOYEES;
+--select * from DEPARTMENTS;
+
+--원하는 속성만을 가져오고 싶은 경우에는 *대신 속성명을 써주면 됨
+select last_name, first_name from EMPLOYEES;
+
+--속성명은 조회할때 변경 가능
+-- 변경하기 위해서는 as 변경속성명을 쓰거나
+-- 한칸 띄고 변경 성명을 쓰면 된다.
+select last_name 성, first_name as 이름 from EMPLOYEES; 
+
+--변경 속성명에 특수문자나 빈칸이 있는 경우에는 반드시 쌍따옴표를 써야한다.
+select last_name as 성, first_name 이름, phone_number "전화 번호" from EMPLOYEES;
+
+--데이터베이스에서 문자는 '' 열이름은 ""을 써야 한다
+select last_name as 성, first_name 이름, phone_number "전화 번호" from EMPLOYEES where last_name = 'King';
+
+--속성을 연결하려는 경우에는 연결연산자 ||를 사용해야 한다.
+
+select last_name || ' ' || first_name "이름", phone_number "전화 번호" from EMPLOYEES;
+
+--select문에 단순한 연산을 할 수 있다.
+select 1+3 from dual;
+select 1+3 from employees;
+-- 월급을 10% 올리는 연산 해보기
+select salary * 1.1 from employees;
+-- 연결연산자는 db에 들어있는 값 이외에 문자와도 연결 가능한다
+select '$'||salary from employees;
+
+-- 같다는 ==가 아니라 =
+-- 논리연산자는 &&는 and, ||는 or 사용
+-- 비교연산자는 자바와 같다
+select salary from EMPLOYEES where salary >= 5000 and salary <= 10000; 
+select * from EMPLOYEES where salary between 5000 and 10000;
+
+--이름에 a가 들어간 사람들 가져오기
+select last_name from EMPLOYEES where last_name like '%a%';

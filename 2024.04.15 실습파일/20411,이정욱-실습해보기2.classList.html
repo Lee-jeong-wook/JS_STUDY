@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습해보기2.classList</title>
+  <style>
+    body {
+      background-color: aliceblue;
+    }
+
+    .html.active {
+      background-color: aqua;
+      font-size: 20px;
+    }
+
+    .html.reactive {
+      color: hotpink;
+      font-size: 30px;
+    }
+
+    .html.reactive::marker {
+      color: hotpink;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">ClassList 연습</h1>
+  <div class="container">
+    <ul id="tutorial">
+      <li class="html">HTML</li>
+      <li class="css">CSS</li>
+      <li class="css3">CSS3</li>
+      <li class="javascript">JavaScript</li>
+      <li class="jquery">jQuery</li>
+    </ul>
+  </div>
+  <input type="button" value="add" onclick="classHandler(this)">
+  <input type="button" value="toggle" onclick="classHandler(this)">
+  <input type="button" value="replace" onclick="classHandler(this)">
+  <input type="button" value="contains" onclick="classHandler(this)">
+  <input type="button" value="remove" onclick="classHandler(this)">
+  <script>
+    const classHandler = function(tag){
+      const text = tag.value;
+      const li = document.querySelector("li");
+      console.log(li.classList);
+      switch (text) {
+        case "add":
+          li.classList.add("active");
+          break;
+        case "toggle":
+        li.classList.toggle("active");
+          break;
+        case "replace":
+        li.classList.replace("active", "reactive");
+          break;
+        case "contains":
+        li.classList[1] ? alert(li.classList[1]): li.classList[0]!=="html"&&li.classList.length !== 0  ? alert(li.classList[0]) : alert("없음");
+        console.log(li.classList[0]!=="html"&&li.classList.length !== 0);
+          break;
+        case "remove":
+        li.classList.remove(...li.classList);
+          break;
+        default:
+          break;
+      }
+    }
+  </script>
+</body>
+
+</html>

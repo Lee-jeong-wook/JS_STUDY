@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex03.요소노드 동적 생성</title>
+  </head>
+  <body>
+    <p>버튼을 클릭하면 h1 스타일로 텍스트가 출력됩니다.</p>
+    <button>Click</button>
+    <script>
+      document.querySelector("button").addEventListener("click", () => {
+        const new_h1 = document.createElement("h1");
+        // h1 태그 노드 생성
+        // const hello_text = document.createTextNode("HelloWorld");
+        // new_h1.appendChild(hello_text);
+        // hello world 텍스트 노드 지정
+        // 요소 노드 텍스트 지정
+        new_h1.textContent = "hello world"
+        // 삽입
+        document.documentElement.appendChild(new_h1);
+      })
+    </script>
+  </body>
+</html>

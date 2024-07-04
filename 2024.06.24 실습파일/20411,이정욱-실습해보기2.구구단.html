@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습해보기2.구구단</title>
+  <style>
+    html, body{
+      height: 100%;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 500px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .questionBox,
+    .resultBox {
+      margin: 10px 0;
+    }
+
+    .answerInput {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      margin-bottom: 10px;
+    }
+
+    .submitBtn,
+    .retryBtn {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+    }
+
+    .submitBtn:hover,
+    .retryBtn:hover {
+      background-color: #0056b3;
+    }
+    .resultBox{
+      color: red;
+    }
+    .fail > #retry{
+      display: block !important;
+    }
+  </style>
+</head>
+
+<body>
+  <form class="container">
+    <h1>구구단을 맞춰 보아요</h1>
+    <div class="questionBox"></div>
+    <input type="text" class="answerInput" placeholder="정답을 입력하세요." >
+    <input type="submit" id="submitAnswer" class="submitBtn" value="제출">
+    <div id="result" class="resultBox"></div>
+    <button id="retry" class="retryBtn" style="display: none;">다시 도전</button>
+    </div>
+    <script>
+     const resultBox = document.querySelector(".resultBox");
+     const retryBtn = document.querySelector("#retry");
+     const questionBox = document.querySelector(".questionBox");
+     const answerInput = document.querySelector(".answerInput");
+     const form = document.querySelector(".container");
+
+     let correct = null;
+
+     const newQuestion = () => {
+      const first = Math.floor(Math.random() * 9) + 1;
+      const second = Math.floor(Math.random() * 9) + 1;
+      correct = first * second;
+      questionBox.textContent = `${first} X ${second} = ?`;
+     };
+
+     const clear = () => {
+      answerInput.value = "";
+      answerInput.focus();
+      newQuestion();
+     };
+
+     const isValid = (value) => {
+      if(!value.trim() || isNaN(value)){
+        alert("input 값이 문자거나 비어서는 안됩니다");
+        return false;
+      }
+      return true;
+     };
+
+     const fail = () => {
+      resultBox.textContent = "틀렸습니다. 다시 도전하세요";
+      form.classList.add("fail");
+     }
+
+     clear();
+
+     form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if(!isValid(answerInput.value)){
+        clear();
+        return;
+      }
+
+      if(correct == answerInput.value){
+        form.classList.remove("fail");
+        resultBox.textContent = "";
+        newQuestion();
+      } else{
+        fail();
+      }
+      clear();
+     })
+
+     retryBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.reload();
+     })
+    </script>
+</body>
+
+</html>

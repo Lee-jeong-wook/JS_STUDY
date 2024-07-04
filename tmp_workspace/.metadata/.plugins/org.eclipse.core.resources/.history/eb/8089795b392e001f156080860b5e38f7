@@ -1,0 +1,55 @@
+<%@page import="vo.MemberVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%MemberVO vo = (MemberVO)request.getAttribute("vo"); %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%@include file="header.jsp"%>
+<form action="Register">
+	<table>
+		<tr>
+			<td>회원번호</td>
+			<td><input name="cust_no" disabled="disabled" value=<%=vo.getCust_no() %>></td>
+		</tr>
+		<tr>
+			<td>회원성명</td>
+			<td><input name="rent_no" disabled="disabled" value=<%=vo.getCust_name() %>></td>
+		</tr>
+		<tr>
+			<td>핸드폰번호</td>
+			<td><input name="rent_book" value=<%=vo.getPhone() %>></td>
+		</tr>
+		<tr>
+			<td>주소</td>
+			<td><input name="rent_rent" value=<%=vo.getAddress() %>></td>
+		</tr>
+		<tr>
+			<td>가입일자</td>
+			<td><input name="close_ymd" disabled="disabled" value=<%=vo.getJoindate() %>></td>
+		</tr>
+		<tr>
+			<td>상태구분</td>
+			<td>
+				<select >
+				<%switch(){ %>
+					<option value="0">정상</option>
+					<option value="1">휴면</option>
+					<option value="2">탈퇴</option>
+				<%} %>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>등록</button><button>조회</button></td>
+		</tr>
+	</table>
+</form>
+<%@include file="footer.jsp"%>
+</body>
+</html>

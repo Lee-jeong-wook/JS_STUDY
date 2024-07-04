@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습해보기1</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const login = (id, pw) => {
+        let idArr = id.split("");
+        let pwArr = pw.split("");
+        if(idArr.includes(" ") || pwArr.includes(" ")){
+            return {
+        isSuccess : false,
+        msg : "공백 제거해주세요"
+    };
+        }
+        // if()
+        if(id !== "JsKing"){
+            return {
+        isSuccess : false,
+        msg : "아이디 실패"
+    };
+        }
+        if(pw !== "1234"){
+            return {
+        isSuccess : false,
+        msg : "비번 실패"
+    };
+        }
+        return {
+        isSuccess : true,
+        msg : "성공"
+    };
+    }
+    let result = {
+        isSuccess : false,
+        msg : null
+    };
+    do{
+        let id = prompt("id 입력");
+        let pw = prompt("pw 입력");
+        result = login(id, pw);
+        alert(result.msg);
+    }while(result.isSuccess === false);
+</script>
+</html>

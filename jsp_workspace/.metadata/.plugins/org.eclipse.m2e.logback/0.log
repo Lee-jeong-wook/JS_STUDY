@@ -1,0 +1,13 @@
+2024-03-28 15:42:24,662 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-03-28 15:43:18,054 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-12.0.6; built: 2024-01-30T02:43:24.387Z; git: 78ab6e6ba163f89cdd97f2ae0283fbb5e371cfaf; jvm 17.0.10+11-LTS-240
+2024-03-28 15:43:18,104 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@1d09723b{/help,/help,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@62e89e34{STARTED}}
+2024-03-28 15:43:18,104 [Start Help Server] INFO  o.e.j.s.DefaultSessionIdManager - Session workerName=node0
+2024-03-28 15:43:18,133 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@43da83b7{HTTP/1.1, (http/1.1)}{127.0.0.1:59372}
+2024-03-28 15:43:18,136 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@5346e8c3{STARTING}[12.0.6,sto=0] @78237ms
+2024-03-28 15:43:18,630 [qtp928899007-94] INFO  o.e.j.e.nested.ContextHandler._help - Warning: No org.apache.tomcat.JarScanner set in ServletContext. Falling back to default JarScanner implementation.
+2024-03-28 15:43:19,194 [qtp928899007-94] INFO  o.e.j.e.nested.ContextHandler._help - Warning: No org.apache.tomcat.JarScanner set in ServletContext. Falling back to default JarScanner implementation.
+2024-03-28 15:43:25,625 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@5346e8c3{STOPPING}[12.0.6,sto=0]
+2024-03-28 15:43:25,632 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@43da83b7{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2024-03-28 15:43:40,591 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-03-28 16:21:54,170 [Worker-39: https://download.oracle.com/otn_software/oepe/12.2.1.10/photon/repository/compositeContent.jar] INFO  o.a.h.c.h.i.c.HttpRequestRetryExec - Recoverable I/O exception (org.apache.hc.core5.http.NoHttpResponseException) caught when processing request to {s}->https://download.oracle.com:443
+2024-03-28 16:22:27,554 [Worker-35: https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/updates/libertyAdapter/2020-09/site.xml] INFO  o.a.h.c.h.i.c.HttpRequestRetryExec - Recoverable I/O exception (org.apache.hc.core5.http.NoHttpResponseException) caught when processing request to {s}->https://public.dhe.ibm.com:443

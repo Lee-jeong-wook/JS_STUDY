@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>실습해보기5.while 문</title>
+  </head>
+
+  <body>
+    <h3>while 문으로 0에서 n까지 합</h3>
+    <hr />
+    <script>
+      const value = prompt("값 입력")
+      let result = 0
+      let cnt = 0;
+      console.log(value)
+      while(cnt !== parseInt(value)){
+        cnt++;
+        console.log(cnt)
+        result += cnt
+      }
+      document.write(`0부터 ${value}의 합은 ${result} &nbsp`)
+      result = 0;
+      cnt = 0;
+      do{
+        cnt++;
+        console.log(cnt)
+        result += cnt
+      }while(cnt !== parseInt(value))
+      document.write(`0부터 ${value}의 합은 ${result}`)
+    </script>
+  </body>
+</html>

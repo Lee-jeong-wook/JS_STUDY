@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>실습해보기1.이벤트의 디폴트 행동 취소</title>
+</head>
+
+<body>
+  <h3>이벤트의 디폴트 행동 취소</h3>
+  <hr>
+  <a href="#">
+    네이버로 이동할 지 물어보는 링크</a>
+  <hr>
+  <p>자바스크립트를 열심히 하시겠습니까?</p>
+  <form>
+    <input type="checkbox">예(체크 됨)<br>
+    <input type="checkbox">아니오(체크 안됨)
+  </form>
+  <script>
+    /**
+     * window.open()
+     * 새 브라우저 창이나 탭 열어야 할때
+     * 예 외부 링크를 열거나 팝어창을 만들 때
+     * window.open(url, name, specs, replace)
+     * => 주소, 창 이름, (창의 크기, 스크롤 여부, 리사이즈 크기, history 항목 대체 여부
+     * 
+     * location.href
+     * 현재 페이지를 다른 페이지로 변경해야 할 때 사용
+     * 예 내바개아숀 랑크를 클릭 시 사용
+     */
+    const boxes = document.querySelectorAll("input");
+    const link = document.querySelector("a");
+    link.addEventListener("click", (e) => {
+      if(confirm("이동하시겠습니까?")){
+        window.open("https://www.naver.com/");
+      } else{
+        e.preventDefault();
+      }
+    });
+    boxes[1].addEventListener("click", (e) => {
+      e.preventDefault();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Insert title here</title>
+</head>
+
+<body>
+  <button onclick="selectByCssSelector();">
+    CSS 선택자로 하나만 선택하기
+  </button>
+  <button onclick="selectByCssSelectorAll();">
+    CSS 선택자로 전체 선택하기
+  </button>
+  <p id="selected"></p>
+  <div>
+    <span class="bbb">1번</span>
+    <span>2번</span>
+    <span id="aaa">3번</span>
+    <span>4번</span>
+    <span class="bbb">5번</span>
+    <span>6번</span>
+  </div>
+  <script type="text/javascript">
+    const alertSystem = () => {
+      const result = prompt("css 선택자를 선택해주세요");
+      const all = document.querySelectorAll("span");
+      all.forEach((e) => {
+        e.setAttribute("style", 'background-color: ""; boder: ""');
+      })
+      return result;
+    }
+    const checkSystem = (result) => {
+      const blank_pattern = /[\s]/g;
+      if (result.match(blank_pattern) || result === "") {
+        alert("input에 공백 포함 불가");
+        return null;
+      }
+      const number_patter = /^.[0-9]|^#[0-9]/;
+      if (result.match(number_patter)) {
+        console.log(result);
+        alert("선택자는 숫자 시작 불가");
+        return null;
+      }
+      const validPattern = /^[^.][a-z]|^[^#][a-z]/;
+      const valid = /^[a-z]/;
+      console.log(result);
+      if (!result.match(validPattern)&& !result.match(valid)) {
+        console.log(result + "안뇽");
+        alert("옳지 않은 선택자");
+        return null;
+      }
+      return result;
+    }
+    const selectByCssSelector = () => {
+      const select = alertSystem();
+      const result = checkSystem(select);
+      if (result === null) {
+        return selectByCssSelector();
+      }
+      const element = document.querySelector(select);
+      if (element === null) {
+        alert("선택자가 존재하지 않습니다");
+        return selectByCssSelector();
+      }
+      element.style.backgroundColor = "red";
+    }
+    const selectByCssSelectorAll = () => {
+      const select = alertSystem();
+      const result = checkSystem(select);
+      if (result === null) {
+        return selectByCssSelectorAll();
+      }
+      const elements = document.querySelectorAll(select);
+      if (elements.length === 0) {
+        alert("선택자가 존재하지 않습니다");
+        return selectByCssSelectorAll();
+      }
+      elements.forEach((e) => {
+        e.style.border = "1px solid black";
+      })
+    }
+  </script>
+</body>
+
+</html>

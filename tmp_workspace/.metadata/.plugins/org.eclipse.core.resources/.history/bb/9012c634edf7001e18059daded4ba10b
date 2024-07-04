@@ -1,0 +1,103 @@
+package kr.hs.sdh.dao;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import kr.hs.sdh.vo.BoardVO;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+/**
+ * Servlet implementation class GetBoardListCtrl
+ */
+public class GetBoardListCtrl extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public GetBoardListCtrl() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//검색조건과 검색어 받아오기
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		System.out.println("안뇽 안뇽 여긴 서버양");
+		if(session.getAttribute("id") == null) {
+			response.sendRedirect("login.jsp");
+		}
+		String searchCondition = request.getParameter("searchCondition");
+		String searchKeyword = request.getParameter("searchKeyword");
+		if(searchCondition == null) searchCondition = "TITLE";
+		if(searchKeyword == null) searchKeyword = "";
+		
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			conn = DriverManager.getConnection(url, "hr", "1234");
+			String sql;
+			if(searchCondition.equals("TITLE")) {
+				sql = ("select * from board where title like '%' || ? || '%'");
+			} else {
+				sql = ("select * from board where content like '%' || ? || '%'");
+			}
+			sql += " order by seq desc";
+			System.out.println(sql);
+			stmt = conn.prepareStatement(url);
+			stmt.setString(1, searchKeyword);
+			rs = stmt.executeQuery();
+			ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+			if(rs.next()) {
+				BoardVO vo = new BoardVO();
+				vo.setTitle(rs.getString("title"));
+				vo.setNickname(rs.getString("nickname"));
+				vo.setSeq(rs.getString("seq"));
+				vo.setContent(rs.getString("content"));
+				vo.setRegdate(rs.getDate("regdate"));
+				vo.setCnt(rs.getInt("cnt"));
+				vo.setUserId(rs.getString("userid"));
+				
+				list.add(vo);
+			}
+			request.setAttribute("list", list);
+			RequestDispatcher view = request.getRequestDispatcher("getBoardList.jsp");
+			view.forward(request, response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

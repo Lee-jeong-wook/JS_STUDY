@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ex02.Node관계 연습</title>
+    <style>
+      body {
+        background-color: aliceblue;
+      }
+
+      li {
+        line-height: 30px;
+      }
+
+      .list_style {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 class="title">Node관계 연습</h1>
+    <div class="container">
+      <ul id="tutorial">
+        <li class="html">HTML</li>
+        <!-- 주석까지 셀까? -->
+        <li class="css">CSS</li>
+        <li class="css3">CSS3</li>
+        <li class="javascript">JavaScript</li>
+        <li class="jquery">jQuery</li>
+      </ul>
+      <input type="button" value="childNodes" />
+      <input type="button" value="children" />
+      <input type="button" value="모든 li태그를 빨간색" />
+      <ol id="result"></ol>
+    </div>
+    <script>
+      //종류에 상관 없이 부모 노드
+      // const  li_parentNode = document.querySelector("li").parentNode;
+      // console.log("parent nod = ", li_parentNode); 
+      //엘리먼트 노드만
+      // const  li_parentElement = document.querySelector("li").parentElement;
+      // console.log("parent element = ", li_parentElement);   
+      // console.log(document.documentElement.parentNode);
+      // console.log(document.documentElement.parentElement);
+
+      // const parentNode = document.getElementById("tutorial");
+
+      // console.log(parentNode.firstChild.nextSibling);
+      // console.log(parentNode.firstElementChild);
+
+      // console.log(parentNode.lastChild.previousSibling);
+      // console.log(parentNode.lastElementChild);
+      
+      const btns = document.querySelectorAll("input");
+      const result = document.querySelector("#result");
+      const container = document.querySelector("#tutorial");
+
+    
+      const showNodes = (nodes) => {
+        result.textContent = "";
+        for (const item of nodes) {
+          const new_li = document.createElement("li");
+          new_li.textContent = item.nodeName;
+          result.appendChild(new_li);
+        }
+      }
+      // const reset = () => {
+      //   let list = result.firstElementChild;
+      //   while (list) {
+      //         list.remove();
+      //         list = result.firstElementChild;
+      //   }
+      // }
+      // const create = (element) => {
+      //   const newList = document.createElement("li");
+      //   newList.textContent = element.nodeName;
+      //   result.appendChild(newList);
+      // } 
+      btns.forEach((button) => {
+        button.addEventListener("click", () => {
+          if(button.value === "childNodes" || button.value === "children"){
+            //childNodes, children
+            showNodes(container[button.value]);
+          }else{
+
+          }
+        //   switch (button.value) {
+        //   case "childNodes":
+        //     reset();
+        //     let list = container.firstChild;
+        //     while (list) {
+        //       create(list);
+        //       list = list.nextSibling;
+        //     }
+        //     break;
+        //   case "children":
+        //     reset();
+        //     let element = container.firstElementChild;
+        //     while (element) {
+        //       create(element);
+        //       element = element.nextElementSibling;
+        //     }
+        //     break;
+        //   default:
+        //     // reset();
+        //     break;
+        // }
+        })
+      })
+      </script>
+  </body>
+</html>

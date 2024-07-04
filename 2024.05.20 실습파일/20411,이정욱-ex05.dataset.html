@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ex05.dataset</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 3px solid black;
+      margin: 10px;
+      display: inline-block;
+      text-align: center;
+      line-height: 100px;
+      cursor: pointer;
+      transition: 0.7s;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>dataset 예제</h1>
+  <div class="box" data-color="red">Box 1</div>
+  <div class="box" data-color="blue">Box 2</div>
+  <div class="box" data-color="green">Box 3</div>
+  <div class="box" data-color="yellow">Box 4</div>
+  <script>
+    // //이벤트 객체 활용(target)
+    // const boxes = document.querySelectorAll("div");
+
+    // boxes.forEach(element => {
+    //   element.addEventListener("click", (e) => {
+    //   //target은 이벤트를 발생시킨 객체(DOM또는 HTML)
+    //   //currentTarget: 현재 이벤트 리스너를 실행하고 있는 DOM 객체
+    //     const target = e.target;
+    //     const color = target.classList[1];
+    //     // if(target.hasAttribute("style")){
+    //     //   target.removeAttribute("style");
+    //     // }else{
+    //     //   target.setAttribute(`style`, `background-color: ${target.classList[1]}`);
+    //     //   target.style.backgroundColor = e.target.getAttribute("style") ? "transparent" : color;
+    //     // }
+    //     target.style.backgroundColor = e.target.getAttribute("style") ? "" : color;
+    //   })
+    // });
+
+
+    document.querySelectorAll(".box").forEach((box, idx) => {
+      box.addEventListener("click", (e) => {
+        e.target.style.backgroundColor = e.target.getAttribute("style") ? "" : e.target.dataset.color;
+      })
+    })
+
+    // const boxList = document.querySelectorAll(".box");
+    // console.log(boxList[0].dataset.color);
+  </script>
+</body>
+
+</html>

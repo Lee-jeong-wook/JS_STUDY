@@ -1,0 +1,14 @@
+package ex;
+
+import java.util.Date;
+import java.util.TimeZone;
+
+public class TimezoneTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TimeZone tz;
+		Date date = new Date();
+	}
+
+}
